@@ -3,187 +3,531 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#041018">
-<title>TRIP CORE // RIDER PORTAL</title>
+<meta name="theme-color" content="#11110f">
+<meta name="description" content="TRIP CORE — The Motoring & Travel Journal. Rides, routes, destinations, road spots and rider stories.">
+<title>TRIP CORE // MOTORING & TRAVEL JOURNAL</title>
+
 <style>
-:root{--bg:#03080c;--panel:#07141b;--panel2:#0a1b23;--cyan:#43e8ff;--blue:#4aa8ff;--green:#57f5a5;--gold:#ffd166;--red:#ff607d;--text:#edfaff;--muted:#78909d;--line:rgba(75,220,255,.2);--mono:"Courier New",monospace}
-*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:Arial,sans-serif;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;z-index:-10;background:radial-gradient(circle at 15% 20%,#06344955,transparent 28%),radial-gradient(circle at 85% 70%,#163b2b44,transparent 25%),linear-gradient(#02070b,#041018 50%,#02070b)}
-.stars,.stars2{position:fixed;inset:0;z-index:-8;pointer-events:none;background-image:radial-gradient(1px 1px at 10% 20%,#fff,transparent),radial-gradient(1px 1px at 35% 70%,#fff,transparent),radial-gradient(1px 1px at 70% 15%,#9defff,transparent),radial-gradient(1px 1px at 85% 80%,#fff,transparent);background-size:300px 220px;opacity:.35;animation:drift 100s linear infinite}.stars2{background-size:500px 360px;opacity:.2;animation-duration:160s;animation-direction:reverse}@keyframes drift{to{transform:translateY(400px)}}
-header{position:fixed;top:0;left:0;right:0;height:70px;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 4vw;background:#03080ce8;backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
-.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:3px;font-size:13px}.brandmark{width:38px;height:38px;border:1px solid var(--cyan);border-radius:50%;display:grid;place-items:center;color:var(--cyan);box-shadow:0 0 25px #00e5ff33}.brandmark:after{content:"✦";font-size:16px}
-nav{display:flex;gap:5px}nav a{color:#8ba5b2;text-decoration:none;font:10px var(--mono);padding:9px 11px}nav a:hover{color:#fff;border:1px solid var(--line)}.live{font:10px var(--mono);color:var(--green)}.live i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);margin-right:6px}
-main{padding-top:70px}section{padding:75px 6vw}.eyebrow{font:10px var(--mono);color:var(--cyan);letter-spacing:3px;margin-bottom:10px}.title{font-size:clamp(32px,5vw,64px);line-height:.95;letter-spacing:-2px}.desc{max-width:760px;color:var(--muted);font-size:13px;line-height:1.8;margin-top:14px}.sectionhead{display:flex;justify-content:space-between;align-items:end;margin-bottom:30px}
-.hero{min-height:calc(88vh - 70px);padding:0;position:relative;overflow:hidden;display:flex;align-items:center}.hero-img{position:absolute;inset:0;background-size:cover;background-position:center;z-index:-2;background-image:url("https://images.pexels.com/photos/38265475/pexels-photo-38265475.jpeg")}.hero-img:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#02070cf5 0%,#02070caa 38%,#02070c22 75%,#02070ce8),linear-gradient(0deg,#02070c,transparent 40%,#02070c88)}
-.hero-content{padding:8vw;max-width:900px}.hero h1{font-size:clamp(48px,8vw,112px);line-height:.83;letter-spacing:-7px;margin:18px 0 25px}.hero p{max-width:650px;color:#b5c8d0;font-size:15px;line-height:1.8}.actions{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap}
-.btn{display:inline-block;border:1px solid var(--cyan);background:#00cfff0d;color:#fff;padding:13px 19px;cursor:pointer;font:10px var(--mono);letter-spacing:2px;text-decoration:none}.btn:hover{background:var(--cyan);color:#001016;box-shadow:0 0 30px #00e5ff33}.btn.alt{border-color:#ffffff2b}
-.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}.stat{background:#061118f2;padding:25px;min-height:135px}.stat small{font:9px var(--mono);color:var(--muted);letter-spacing:2px}.stat strong{display:block;font:34px var(--mono);margin:15px 0 8px}.ok{color:var(--green)}
-.search{width:100%;padding:15px;background:#061118;border:1px solid var(--line);color:#fff;outline:none;font:11px var(--mono);margin-bottom:18px}.filters{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:20px}.filter{padding:9px 13px;background:transparent;color:var(--muted);border:1px solid var(--line);font:9px var(--mono);cursor:pointer}.filter.active,.filter:hover{color:#fff;border-color:var(--cyan);background:#00d9ff0d}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card,.panel{border:1px solid var(--line);background:#061118;padding:22px}.card{transition:.25s}.card:hover{transform:translateY(-4px);border-color:var(--cyan)}.card h3{font-size:24px;margin:9px 0}.card p{font-size:11px;line-height:1.7;color:var(--muted)}.tag{font:9px var(--mono);color:var(--cyan);letter-spacing:2px}.meta{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:15px 0}.meta div{background:#07151d;padding:12px;border:1px solid #ffffff08}.meta small{display:block;color:var(--muted);font:8px var(--mono)}.meta b{display:block;margin-top:6px;font-size:12px}
-.map-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.status{font:9px var(--mono);color:var(--green);border:1px solid #57f5a533;padding:7px 9px;display:inline-block}
-.two{display:grid;grid-template-columns:1.2fr 1fr;gap:18px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font:9px var(--mono);color:var(--muted);letter-spacing:1px}.field input,.field select,.field textarea{width:100%;background:#030b10;border:1px solid var(--line);color:#fff;padding:13px;outline:none;font:11px Arial}.field textarea{min-height:100px;resize:vertical}.notice{padding:14px;border-left:2px solid var(--cyan);background:#061118;color:var(--muted);font-size:11px;line-height:1.7;margin-top:15px}
-.tablewrap{overflow:auto;border:1px solid var(--line)}table{width:100%;border-collapse:collapse;min-width:700px}th,td{text-align:left;padding:13px;border-bottom:1px solid #ffffff0a;font-size:11px}th{font:9px var(--mono);color:var(--cyan);letter-spacing:1px;background:#07151d}td{color:#b6c7cd}.empty{text-align:center;padding:35px;color:var(--muted);font:11px var(--mono)}
-footer{border-top:1px solid var(--line);padding:55px 6vw;background:#02070b}.footergrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}.footergrid p,.footergrid a{font-size:11px;color:var(--muted);line-height:2;text-decoration:none}.copy{margin-top:35px;border-top:1px solid #ffffff0b;padding-top:20px;color:#526773;font:9px var(--mono)}
-.toast{position:fixed;right:20px;bottom:20px;z-index:3000;background:#061118;border:1px solid var(--cyan);padding:15px 18px;max-width:360px;font:11px var(--mono);display:none;box-shadow:0 15px 50px #0008}.toast.show{display:block}
-@media(max-width:1000px){nav{display:none}.grid4{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}.footergrid{grid-template-columns:1fr 1fr}}
-@media(max-width:650px){section{padding:60px 5vw}.grid4,.cards,.formgrid{grid-template-columns:1fr}.hero-content{padding:25px}.hero h1{font-size:58px;letter-spacing:-4px}.footergrid{grid-template-columns:1fr}.field.full{grid-column:auto}}
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+:root{
+  --ink:#11110f;
+  --paper:#f2efe7;
+  --paper2:#e8e3d7;
+  --white:#fffdf7;
+  --muted:#6e6b63;
+  --line:#c9c4b8;
+  --red:#d84a32;
+  --yellow:#e7b83d;
+  --green:#4c7459;
+  --blue:#476b79;
+  --serif:Georgia,"Times New Roman",serif;
+  --display:"Barlow Condensed",Impact,sans-serif;
+  --sans:"DM Sans",Arial,sans-serif;
+  --mono:"Space Mono","Courier New",monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);overflow-x:hidden}
+body:before{
+  content:"";position:fixed;inset:0;z-index:-5;pointer-events:none;opacity:.16;
+  background-image:radial-gradient(#111 0.55px,transparent .55px);
+  background-size:6px 6px;
+}
+a{color:inherit}
+button,input,select,textarea{font:inherit}
+img{max-width:100%;display:block}
+::selection{background:var(--ink);color:var(--yellow)}
+
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:1000;height:58px;
+  background:rgba(242,239,231,.94);backdrop-filter:blur(12px);
+  border-bottom:2px solid var(--ink);display:flex;align-items:center;
+  justify-content:space-between;padding:0 4vw;
+}
+.logo{font:900 25px/1 var(--display);letter-spacing:1px;text-decoration:none}
+.logo span{color:var(--red)}
+.topnav{display:flex;gap:4px;align-items:center}
+.topnav a{font:700 10px var(--mono);text-decoration:none;padding:9px 10px;border:1px solid transparent}
+.topnav a:hover{background:var(--ink);color:var(--white)}
+.top-status{font:700 9px var(--mono);letter-spacing:1px}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:6px}
+
+main{padding-top:58px}
+.section{padding:88px 5vw;border-bottom:2px solid var(--ink)}
+.kicker{font:700 10px var(--mono);letter-spacing:2px;text-transform:uppercase}
+.kicker:before{content:"// ";color:var(--red)}
+.section-title{font:900 clamp(48px,8vw,110px)/.82 var(--display);letter-spacing:-2px;text-transform:uppercase}
+.section-intro{max-width:700px;color:var(--muted);font-size:14px;line-height:1.75;margin-top:18px}
+
+.cover{
+  min-height:calc(100vh - 58px);position:relative;display:grid;
+  grid-template-columns:1.05fr .95fr;overflow:hidden;border-bottom:2px solid var(--ink);
+}
+.cover-photo{
+  min-height:calc(100vh - 58px);position:relative;background:#1b1b18;
+  background-image:
+    linear-gradient(90deg,rgba(17,17,15,.98) 0%,rgba(17,17,15,.78) 30%,rgba(17,17,15,.15) 68%,rgba(17,17,15,.05)),
+    url("https://images.pexels.com/photos/38265475/pexels-photo-38265475.jpeg");
+  background-size:cover;background-position:center;
+}
+.cover-copy{position:absolute;left:7vw;top:50%;transform:translateY(-45%);color:#fffdf7;max-width:700px}
+.cover-kicker{font:700 11px var(--mono);letter-spacing:3px;color:var(--yellow);margin-bottom:18px}
+.cover h1{font:900 clamp(80px,13vw,190px)/.76 var(--display);letter-spacing:-5px}
+.cover h1 em{font-style:normal;color:var(--red)}
+.cover-sub{font:500 clamp(18px,2vw,25px)/1.15 var(--serif);max-width:520px;margin-top:28px}
+.cover-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  border:2px solid var(--ink);background:var(--ink);color:var(--white);
+  padding:13px 18px;text-decoration:none;font:700 10px var(--mono);
+  letter-spacing:1px;cursor:pointer;transition:.2s;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:5px 5px 0 var(--red)}
+.btn.light{background:var(--white);color:var(--ink);border-color:var(--white)}
+.btn.outline{background:transparent;color:var(--ink)}
+.cover .outline{color:var(--white);border-color:var(--white)}
+.cover-side{
+  background:var(--yellow);padding:30px 4vw;display:flex;flex-direction:column;
+  justify-content:space-between;border-left:2px solid var(--ink);
+}
+.issue{font:700 10px var(--mono);display:flex;justify-content:space-between;border-bottom:2px solid var(--ink);padding-bottom:12px}
+.cover-headlines{margin-top:auto;margin-bottom:auto}
+.cover-headlines .mini{font:700 10px var(--mono);letter-spacing:1px;margin-bottom:10px}
+.cover-headlines h2{font:900 clamp(48px,6vw,88px)/.82 var(--display);text-transform:uppercase}
+.cover-headlines p{font:600 13px/1.6 var(--sans);max-width:390px;margin-top:18px}
+.cover-number{font:900 130px/.7 var(--display);opacity:.15;text-align:right}
+.scroll-note{font:700 9px var(--mono);letter-spacing:2px}
+
+.ticker{background:var(--ink);color:var(--yellow);border-bottom:2px solid var(--ink);overflow:hidden;white-space:nowrap}
+.ticker-track{display:inline-block;padding:12px 0;animation:ticker 28s linear infinite;font:700 11px var(--mono);letter-spacing:1px}
+.ticker-track span{margin:0 30px}
+@keyframes ticker{to{transform:translateX(-50%)}}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border:2px solid var(--ink);background:var(--ink);gap:2px}
+.stat{background:var(--paper);padding:25px;min-height:145px}
+.stat small{font:700 9px var(--mono);color:var(--muted);letter-spacing:1px}
+.stat strong{display:block;font:900 65px/.9 var(--display);margin:15px 0 5px}
+.stat span{font:700 9px var(--mono);color:var(--green)}
+
+.feature-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:20px;margin-top:38px}
+.feature{
+  min-height:520px;position:relative;overflow:hidden;border:2px solid var(--ink);
+  background:#222;
+}
+.feature-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .7s}
+.feature:hover .feature-bg{transform:scale(1.04)}
+.feature:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.9),transparent 62%)}
+.feature-content{position:absolute;z-index:2;left:28px;right:28px;bottom:28px;color:var(--white)}
+.feature-tag{font:700 9px var(--mono);letter-spacing:2px;color:var(--yellow)}
+.feature h3{font:900 clamp(48px,7vw,92px)/.78 var(--display);margin:10px 0}
+.feature p{max-width:650px;font-size:12px;line-height:1.65;color:#ddd}
+.side-stories{display:grid;grid-template-rows:1fr 1fr;gap:20px}
+.story{
+  border:2px solid var(--ink);background:var(--white);padding:25px;
+  display:flex;flex-direction:column;justify-content:space-between;min-height:250px;
+}
+.story:nth-child(2){background:var(--red);color:var(--white)}
+.story .num{font:900 48px var(--display);opacity:.25}
+.story h3{font:900 42px/.82 var(--display);text-transform:uppercase}
+.story p{font-size:11px;line-height:1.55;margin-top:10px}
+
+.machine-switch{display:flex;gap:0;border:2px solid var(--ink);width:max-content;margin-top:30px}
+.machine-switch button{border:0;border-right:2px solid var(--ink);background:transparent;padding:13px 18px;font:700 10px var(--mono);cursor:pointer}
+.machine-switch button:last-child{border-right:0}
+.machine-switch button.active,.machine-switch button:hover{background:var(--ink);color:var(--yellow)}
+
+.editorial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
+.mag-card{border:2px solid var(--ink);background:var(--white);min-height:390px;display:flex;flex-direction:column}
+.mag-image{height:190px;background:#555;background-size:cover;background-position:center;position:relative}
+.mag-image:after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,transparent 60%,rgba(17,17,15,.25))}
+.mag-body{padding:20px;display:flex;flex:1;flex-direction:column}
+.mag-label{font:700 9px var(--mono);color:var(--red);letter-spacing:1px}
+.mag-card h3{font:900 39px/.82 var(--display);margin:9px 0;text-transform:uppercase}
+.mag-card p{font-size:11px;line-height:1.6;color:var(--muted)}
+.mag-meta{margin-top:auto;padding-top:16px;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mag-meta small{font:700 8px var(--mono);color:var(--muted);display:block}
+.mag-meta b{font-size:11px;display:block;margin-top:4px}
+.card-actions{display:flex;gap:7px;margin-top:15px;flex-wrap:wrap}
+.card-actions .btn{padding:9px 11px;font-size:9px}
+
+.route-band{background:var(--ink);color:var(--white);padding:55px 5vw;border-bottom:2px solid var(--ink);overflow:hidden}
+.route-line{display:flex;align-items:center;gap:18px;white-space:nowrap;overflow:auto;padding-bottom:8px}
+.route-node{flex:0 0 auto;border:1px solid #ffffff55;padding:18px 20px}
+.route-node b{display:block;font:900 35px/.8 var(--display)}
+.route-node small{font:700 8px var(--mono);color:#aaa;display:block;margin-top:9px}
+.route-arrow{font:900 28px var(--display);color:var(--yellow)}
+
+.spot-layout{display:grid;grid-template-columns:.65fr 1.35fr;gap:20px;margin-top:35px}
+.spot-intro{background:var(--red);color:var(--white);border:2px solid var(--ink);padding:30px;min-height:430px;display:flex;flex-direction:column;justify-content:space-between}
+.spot-intro h3{font:900 75px/.75 var(--display)}
+.spot-intro p{font:12px/1.7}
+.spot-list{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.spot-card{border:2px solid var(--ink);background:var(--white);padding:20px;min-height:205px}
+.spot-card h4{font:900 35px/.85 var(--display);margin:8px 0}
+.spot-card p{font-size:10px;color:var(--muted);line-height:1.55}
+.spot-card .btn{margin-top:14px}
+
+.search-panel{margin-top:35px;border:2px solid var(--ink);background:var(--white);padding:24px}
+.searchbox{width:100%;border:0;border-bottom:2px solid var(--ink);padding:15px 0;background:transparent;outline:none;font:900 35px var(--display);text-transform:uppercase}
+.searchbox::placeholder{color:#aaa}
+.search-results{margin-top:18px;overflow:auto}
+.search-results table{width:100%;border-collapse:collapse;min-width:700px}
+.search-results th,.search-results td{text-align:left;padding:13px;border-bottom:1px solid var(--line);font-size:11px}
+.search-results th{font:700 9px var(--mono);letter-spacing:1px}
+
+.journal{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:35px}
+.form-panel,.journal-poster{border:2px solid var(--ink);background:var(--white);padding:30px}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+.field label{font:700 9px var(--mono);color:var(--muted);letter-spacing:1px}
+.field input,.field select,.field textarea{width:100%;border:1px solid var(--ink);background:var(--paper);color:var(--ink);padding:13px;outline:none;font-size:12px}
+.field textarea{min-height:125px;resize:vertical}
+.form-panel .btn{margin-top:16px}
+.journal-poster{background:var(--ink);color:var(--white);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;position:relative}
+.journal-poster:before{content:"ROAD";position:absolute;right:-25px;top:40px;font:900 160px/.7 var(--display);color:#ffffff08;transform:rotate(90deg)}
+.journal-poster h3{font:900 clamp(65px,8vw,110px)/.73 var(--display);position:relative}
+.journal-poster p{max-width:420px;color:#aaa;font-size:12px;line-height:1.7;position:relative}
+.notice{border-left:3px solid var(--yellow);padding:13px;background:#ffffff0a;color:#aaa;font-size:10px;line-height:1.6;margin-top:18px;position:relative}
+
+.social{background:var(--yellow);display:grid;grid-template-columns:1fr 1fr;gap:25px;align-items:center}
+.social h2{font:900 clamp(65px,9vw,125px)/.72 var(--display)}
+.social p{font:13px/1.7;max-width:480px;margin:20px 0}
+.social-box{border:2px solid var(--ink);background:var(--white);padding:30px;min-height:270px;display:flex;flex-direction:column;justify-content:space-between}
+.social-box .handle{font:900 50px/.8 var(--display)}
+
+footer{background:var(--ink);color:var(--white);padding:60px 5vw}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}
+.footer-logo{font:900 70px/.75 var(--display)}
+.footer-grid h4{font:700 9px var(--mono);color:var(--yellow);letter-spacing:2px;margin-bottom:15px}
+.footer-grid a,.footer-grid p{font-size:11px;color:#aaa;text-decoration:none;line-height:2}
+.footer-grid a:hover{color:#fff}
+.copy{border-top:1px solid #ffffff22;margin-top:40px;padding-top:18px;font:8px var(--mono);color:#777;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+
+.toast{position:fixed;right:20px;bottom:20px;z-index:3000;background:var(--ink);color:var(--white);border:2px solid var(--yellow);padding:15px 18px;max-width:370px;font:10px var(--mono);display:none;box-shadow:8px 8px 0 var(--red)}
+.toast.show{display:block}
+
+.reveal{opacity:0;transform:translateY(25px);transition:.7s ease}
+.reveal.visible{opacity:1;transform:none}
+
+@media(max-width:1050px){
+  .topnav{display:none}
+  .cover{grid-template-columns:1fr}
+  .cover-photo{min-height:75vh}
+  .cover-side{min-height:390px;border-left:0;border-top:2px solid var(--ink)}
+  .stats{grid-template-columns:1fr 1fr}
+  .feature-grid,.journal,.social,.spot-layout{grid-template-columns:1fr}
+  .editorial-grid{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:650px){
+  .section{padding:65px 5vw}
+  .cover-copy{left:25px;right:25px}
+  .cover h1{font-size:78px;letter-spacing:-3px}
+  .cover-photo{min-height:70vh}
+  .cover-side{padding:25px}
+  .stats{grid-template-columns:1fr 1fr}
+  .stat{padding:18px;min-height:120px}
+  .stat strong{font-size:48px}
+  .editorial-grid,.spot-list,.formgrid{grid-template-columns:1fr}
+  .field.full{grid-column:auto}
+  .feature{min-height:470px}
+  .feature h3{font-size:60px}
+  .social h2{font-size:75px}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-logo{font-size:65px}
+  .searchbox{font-size:28px}
+}
 </style>
 </head>
-<body>
-<div class="stars"></div><div class="stars2"></div>
 
-<header>
-  <div class="brand"><div class="brandmark"></div><div>TRIP CORE<br><small style="font:8px var(--mono);color:var(--muted)">RIDER PORTAL</small></div></div>
-  <nav>
-    <a href="#trips">TRIPS</a><a href="#locations">LOCATIONS</a><a href="#spots">SPOTS</a>
-    <a href="#search">SEARCH</a><a href="#log">RIDE LOG</a><a href="#gallery">GALLERY</a>
+<body>
+<header class="topbar">
+  <a href="#top" class="logo">TRIP <span>CORE</span></a>
+  <nav class="topnav">
+    <a href="#rides">RIDES</a>
+    <a href="#machines">MACHINES</a>
+    <a href="#routes">ROUTES</a>
+    <a href="#spots">SPOTS</a>
+    <a href="#search">SEARCH</a>
+    <a href="#journal">JOURNAL</a>
   </nav>
-  <div class="live"><i></i><span id="headerStatus">CONNECTING</span></div>
+  <div class="top-status"><i class="dot"></i><span id="headerStatus">CONNECTING</span></div>
 </header>
 
-<main>
-<section class="hero">
-  <div class="hero-img"></div>
-  <div class="hero-content">
-    <div class="eyebrow">TRIP CORE // RIDER INFORMATION SYSTEM</div>
-    <h1>RIDE.<br>EXPLORE.<br>CONNECT.</h1>
-    <p>A live information portal for our riding group. Check upcoming rides, find current locations, open any destination directly in Google Maps, search group records and submit useful ride information.</p>
-    <div class="actions">
-      <a class="btn" href="#trips">VIEW RIDES</a>
-      <a class="btn alt" href="#locations">GO TO LOCATIONS</a>
-      <a class="btn alt" id="instagramBtn" target="_blank" rel="noopener">INSTAGRAM</a>
+<main id="top">
+
+<section class="cover">
+  <div class="cover-photo">
+    <div class="cover-copy">
+      <div class="cover-kicker">TRIP CORE // MOTORING & TRAVEL JOURNAL</div>
+      <h1>RIDE.<br>GO.<br><em>LIVE.</em></h1>
+      <p class="cover-sub">Stories, roads, machines and places from our side of the map.</p>
+      <div class="cover-actions">
+        <a class="btn light" href="#rides">ENTER THE ROAD →</a>
+        <a class="btn outline" id="instagramBtn" target="_blank" rel="noopener">INSTAGRAM</a>
+      </div>
+    </div>
+  </div>
+  <aside class="cover-side">
+    <div class="issue"><span>ISSUE 01</span><span>KERALA / INDIA</span><span id="issueDate">2026</span></div>
+    <div class="cover-headlines">
+      <div class="mini">THIS IS NOT JUST A TRIP.</div>
+      <h2>IT'S THE<br>STORY<br>AFTER<br>THE START.</h2>
+      <p>One digital magazine for group rides, road discoveries, destinations, useful stops and the memories that happen between them.</p>
+    </div>
+    <div>
+      <div class="cover-number">01</div>
+      <div class="scroll-note">↓ SCROLL TO START THE JOURNEY</div>
+    </div>
+  </aside>
+</section>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <span>TRIP CORE</span><span>RIDE SAFE</span><span>RESPECT THE ROAD</span><span>FIND NEW ROADS</span><span>MAKE MEMORIES</span>
+    <span>TRIP CORE</span><span>RIDE SAFE</span><span>RESPECT THE ROAD</span><span>FIND NEW ROADS</span><span>MAKE MEMORIES</span>
+  </div>
+</div>
+
+<section class="section">
+  <div class="stats reveal">
+    <div class="stat"><small>UPCOMING RIDES</small><strong id="statTrips">—</strong><span>LIVE DATA</span></div>
+    <div class="stat"><small>KNOWN LOCATIONS</small><strong id="statLocations">—</strong><span>MAP READY</span></div>
+    <div class="stat"><small>TRIP SPOTS</small><strong id="statSpots">—</strong><span>SEARCHABLE</span></div>
+    <div class="stat"><small>PORTAL STATUS</small><strong id="statStatus">—</strong><span id="lastSync">WAITING...</span></div>
+  </div>
+</section>
+
+<section class="section" id="rides">
+  <div class="kicker">01 // THE BIG STORY</div>
+  <h2 class="section-title">FEATURED<br>RIDE</h2>
+  <p class="section-intro">The front page of the road. Your Google Sheet remains the source of truth; this new interface turns that information into a visual travel magazine.</p>
+
+  <div class="feature-grid reveal">
+    <article class="feature" id="featuredStory">
+      <div class="feature-bg" style="background-image:url('https://images.pexels.com/photos/38265475/pexels-photo-38265475.jpeg')"></div>
+      <div class="feature-content">
+        <div class="feature-tag" id="featuredTag">TRIP CORE // FEATURE</div>
+        <h3 id="featuredTitle">THE NEXT<br>ROAD AWAITS</h3>
+        <p id="featuredDesc">Loading the latest ride story from the group database...</p>
+        <div class="card-actions">
+          <a class="btn light" id="featuredMap" target="_blank" rel="noopener">OPEN ROUTE →</a>
+          <a class="btn outline" href="#journal">WRITE A STORY</a>
+        </div>
+      </div>
+    </article>
+
+    <div class="side-stories">
+      <article class="story">
+        <div class="num">02</div>
+        <div>
+          <h3>ROAD<br>NOTES</h3>
+          <p>Fuel, food, road conditions, meeting points and useful information discovered by riders.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="num">03</div>
+        <div>
+          <h3>LOCAL<br>FINDINGS</h3>
+          <p>Turn every stop into a permanent group resource — from workshops to viewpoints.</p>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
-<section>
-  <div class="grid4">
-    <div class="stat"><small>UPCOMING RIDES</small><strong id="statTrips">—</strong><span class="ok">LIVE DATA</span></div>
-    <div class="stat"><small>KNOWN LOCATIONS</small><strong id="statLocations">—</strong><span class="ok">MAP READY</span></div>
-    <div class="stat"><small>TRIP SPOTS</small><strong id="statSpots">—</strong><span class="ok">SEARCHABLE</span></div>
-    <div class="stat"><small>PORTAL STATUS</small><strong id="statStatus">—</strong><span id="lastSync">Waiting...</span></div>
+<section class="section" id="machines">
+  <div class="kicker">02 // THE GARAGE</div>
+  <h2 class="section-title">MACHINES<br>ON THE ROAD</h2>
+  <p class="section-intro">Switch the visual language between motorcycles, cars and the complete road collection. This filter is ready for future machine fields in your Sheet.</p>
+
+  <div class="machine-switch">
+    <button class="active" data-machine="ALL">ALL</button>
+    <button data-machine="BIKE">🏍 BIKE</button>
+    <button data-machine="CAR">🚗 CAR</button>
+    <button data-machine="OTHER">OTHER</button>
+  </div>
+
+  <div id="machineGrid" class="editorial-grid reveal">
+    <div class="mag-card">
+      <div class="mag-image" style="background-image:url('https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg')"></div>
+      <div class="mag-body"><div class="mag-label">MACHINE / BIKE</div><h3>THE<br>RIDER'S<br>CHOICE</h3><p>Your rider and vehicle information will appear here when machine data is available.</p></div>
+    </div>
+    <div class="mag-card">
+      <div class="mag-image" style="background-image:url('https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg')"></div>
+      <div class="mag-body"><div class="mag-label">MACHINE / CAR</div><h3>FOUR<br>WHEELS</h3><p>Cars, touring vehicles and road-trip machines can share the same magazine space.</p></div>
+    </div>
+    <div class="mag-card">
+      <div class="mag-image" style="background-image:url('https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg')"></div>
+      <div class="mag-body"><div class="mag-label">ROAD / OPEN</div><h3>NO<br>FIXED<br>DESTINATION</h3><p>Choose a road, choose a machine and let the story happen.</p></div>
+    </div>
   </div>
 </section>
 
-<section id="trips">
-  <div class="sectionhead"><div><div class="eyebrow">01 // GROUP RIDES</div><h2 class="title">UPCOMING TRIPS</h2><p class="desc">Ride information comes from Google Sheets, so the group coordinator can add or change trips without editing this HTML.</p></div></div>
-  <div id="tripCards" class="cards"><div class="empty">LOADING TRIPS...</div></div>
+<section class="route-band" id="routes">
+  <div class="kicker" style="color:var(--yellow)">03 // ROUTE BOARD</div>
+  <h2 class="section-title" style="color:var(--white);margin:12px 0 35px">FOLLOW<br>THE LINE</h2>
+  <div class="route-line" id="routeLine">
+    <div class="route-node"><small>START</small><b>GROUP</b></div>
+    <div class="route-arrow">→</div>
+    <div class="route-node"><small>WAYPOINT</small><b>ROAD</b></div>
+    <div class="route-arrow">→</div>
+    <div class="route-node"><small>DESTINATION</small><b>UNKNOWN</b></div>
+  </div>
 </section>
 
-<section id="locations">
-  <div class="sectionhead"><div><div class="eyebrow">02 // WHERE ARE WE GOING?</div><h2 class="title">RIDING LOCATIONS</h2><p class="desc">Open a destination, start point, meeting point or current location directly in Google Maps.</p></div></div>
-  <div id="locationCards" class="cards"><div class="empty">LOADING LOCATIONS...</div></div>
+<section class="section" id="destinations">
+  <div class="kicker">04 // DESTINATIONS</div>
+  <h2 class="section-title">PLACES<br>WORTH THE FUEL</h2>
+  <p class="section-intro">Every destination from your database becomes a magazine story with a direct Google Maps route.</p>
+  <div id="locationCards" class="editorial-grid reveal">
+    <div class="empty">LOADING DESTINATIONS...</div>
+  </div>
 </section>
 
-<section id="spots">
-  <div class="sectionhead"><div><div class="eyebrow">03 // DISCOVERED ON THE ROAD</div><h2 class="title">TRIP SPOTS</h2><p class="desc">Food stops, fuel stations, viewpoints, workshops, hotels, scenic roads and other useful places can be stored and searched here.</p></div></div>
-  <div id="spotCards" class="cards"><div class="empty">LOADING SPOTS...</div></div>
+<section class="section" id="spots">
+  <div class="kicker">05 // ROAD INTELLIGENCE</div>
+  <h2 class="section-title">FOUND<br>ON THE WAY</h2>
+  <div class="spot-layout reveal">
+    <div class="spot-intro">
+      <div><div class="kicker" style="color:var(--yellow)">FIELD NOTES</div><h3>STOP.<br>LOOK.<br>SAVE.</h3></div>
+      <p>Food stops. Fuel. Workshops. Hotels. Viewpoints. Scenic roads. Emergency information. If a rider finds it useful, the group can keep it.</p>
+    </div>
+    <div id="spotCards" class="spot-list"><div class="empty">LOADING SPOTS...</div></div>
+  </div>
 </section>
 
-<section id="search">
-  <div class="sectionhead"><div><div class="eyebrow">04 // DATA SEARCH</div><h2 class="title">SEARCH THE PORTAL</h2><p class="desc">Search across trips, locations, spots, riders and ride logs stored in the group's Google Sheet.</p></div></div>
-  <input id="searchBox" class="search" placeholder="SEARCH: rider, place, branch, trip, bike, note, date..." oninput="renderSearch()">
-  <div id="searchResults" class="tablewrap"><div class="empty">TYPE SOMETHING TO SEARCH</div></div>
+<section class="section" id="search">
+  <div class="kicker">06 // ARCHIVE</div>
+  <h2 class="section-title">FIND<br>YOUR ROAD</h2>
+  <div class="search-panel reveal">
+    <input id="searchBox" class="searchbox" placeholder="SEARCH RIDER / PLACE / BIKE / ROAD..." oninput="renderSearch()">
+    <div id="searchResults" class="search-results"><div class="empty">TYPE SOMETHING TO SEARCH</div></div>
+  </div>
 </section>
 
-<section id="log">
-  <div class="sectionhead"><div><div class="eyebrow">05 // RIDER CONTRIBUTION</div><h2 class="title">ADD RIDE INFORMATION</h2><p class="desc">Riders can submit useful information. It is saved into the Google Sheet for the group to search later.</p></div></div>
-  <div class="two">
-    <div class="panel">
+<section class="section" id="journal">
+  <div class="kicker">07 // ROAD JOURNAL</div>
+  <h2 class="section-title">WRITE THE<br>NEXT STORY</h2>
+  <p class="section-intro">Riders can add useful information to the shared database. The same Apps Script workflow powers the form behind this new design.</p>
+
+  <div class="journal reveal">
+    <div class="form-panel">
       <form id="rideForm">
         <div class="formgrid">
           <div class="field"><label>RIDER NAME *</label><input name="riderName" required></div>
-          <div class="field"><label>BIKE / VEHICLE</label><input name="bike"></div>
+          <div class="field"><label>BIKE / CAR / VEHICLE</label><input name="bike"></div>
           <div class="field"><label>TYPE *</label><select name="type" required><option value="">SELECT</option><option>LOCATION</option><option>SPOT</option><option>RIDE UPDATE</option><option>FUEL</option><option>FOOD</option><option>WORKSHOP</option><option>HOTEL</option><option>OTHER</option></select></div>
           <div class="field"><label>PLACE / TITLE *</label><input name="title" required></div>
           <div class="field"><label>DATE</label><input name="date" type="date"></div>
           <div class="field"><label>STATUS</label><select name="status"><option>INFO</option><option>OPEN</option><option>REACHED</option><option>COMPLETED</option><option>URGENT</option></select></div>
           <div class="field full"><label>GOOGLE MAPS LINK</label><input name="mapUrl" placeholder="Paste a Google Maps link"></div>
-          <div class="field full"><label>NOTES</label><textarea name="notes" placeholder="Road condition, meeting point, timing, fuel, food, route change, emergency information..."></textarea></div>
+          <div class="field full"><label>ROAD STORY / NOTES</label><textarea name="notes" placeholder="Road condition, meeting point, timing, fuel, food, route change, emergency information..."></textarea></div>
         </div>
-        <button class="btn" type="submit" style="margin-top:15px">SAVE TO GROUP DATABASE</button>
+        <button class="btn" type="submit">PUBLISH TO ROAD JOURNAL →</button>
       </form>
     </div>
-    <div class="panel">
-      <div class="tag">HOW IT WORKS</div>
-      <h3 style="font-size:32px;margin:14px 0">ONE PORTAL.<br>ONE DATABASE.</h3>
-      <p class="desc">The website is the front end. Google Sheets is the group's database. Google Apps Script connects them. Add a new trip or location in the Sheet and the website can display it automatically.</p>
-      <div class="notice">IMPORTANT // Do not put private passwords, financial information or sensitive personal information into this public portal. For a large group, add authentication/admin controls later.</div>
+
+    <div class="journal-poster">
+      <div>
+        <div class="kicker" style="color:var(--yellow)">TRIP CORE EDITION</div>
+        <h3>EVERY<br>RIDE<br>LEAVES<br>A TRACE.</h3>
+      </div>
+      <div>
+        <p>Your contribution is stored in the group database so future riders can search and use the information.</p>
+        <div class="notice">IMPORTANT // Do not put private passwords, financial information or sensitive personal information into this public portal. For a large group, add authentication/admin controls later.</div>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="gallery">
-  <div class="sectionhead"><div><div class="eyebrow">06 // SOCIAL</div><h2 class="title">GROUP INSTAGRAM</h2><p class="desc">The button below is linked to the group's Instagram account. Change the account once in the CONFIG section of this HTML.</p></div></div>
-  <div class="panel">
-    <div class="actions"><a class="btn" id="instagramMain" target="_blank" rel="noopener">OPEN INSTAGRAM</a><a class="btn alt" href="#log">ADD RIDE INFORMATION</a></div>
+<section class="section social" id="gallery">
+  <div>
+    <div class="kicker">08 // SOCIAL</div>
+    <h2>SEE THE<br>RIDE.</h2>
+    <p>Follow the group's Instagram for photographs, meetups, memories and moments that belong outside the database.</p>
+    <a class="btn" id="instagramMain" target="_blank" rel="noopener">OPEN INSTAGRAM →</a>
+  </div>
+  <div class="social-box">
+    <div class="kicker">TRIP CORE / SOCIAL FEED</div>
+    <div class="handle">@TRIP_CORE_RIDERS</div>
+    <div><p>Stories from the road. Shared by the riders.</p><a class="btn outline" href="#journal">ADD YOUR STORY</a></div>
   </div>
 </section>
+
 </main>
 
 <footer>
-  <div class="footergrid">
-    <div><h3>TRIP CORE</h3><p>Rider information portal for trips, locations, route information, useful spots and ride records.</p></div>
-    <div><div class="eyebrow">NAVIGATE</div><p><a href="#trips">Upcoming Trips</a></p><p><a href="#locations">Locations</a></p><p><a href="#spots">Spots</a></p></div>
-    <div><div class="eyebrow">DATA</div><p><a href="#search">Search</a></p><p><a href="#log">Add Ride Log</a></p><p><a href="#gallery">Instagram</a></p></div>
-    <div><div class="eyebrow">POWERED BY</div><p>GitHub Pages</p><p>Google Sheets</p><p>Google Apps Script</p></div>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">TRIP<br><span style="color:var(--red)">CORE</span></div>
+      <p style="margin-top:20px;max-width:350px">The group's digital motoring and travel journal — rides, routes, machines, places and road memories.</p>
+    </div>
+    <div><h4>THE JOURNAL</h4><p><a href="#rides">Featured Ride</a></p><p><a href="#machines">Machines</a></p><p><a href="#routes">Routes</a></p><p><a href="#destinations">Destinations</a></p></div>
+    <div><h4>ROAD DATA</h4><p><a href="#spots">Road Spots</a></p><p><a href="#search">Search Archive</a></p><p><a href="#journal">Add Story</a></p><p><a href="#gallery">Instagram</a></p></div>
+    <div><h4>PLATFORM</h4><p>GitHub Pages</p><p>Google Sheets</p><p>Google Apps Script</p><p>Trip Core Journal</p></div>
   </div>
-  <div class="copy">TRIP CORE // RIDER PORTAL // RIDE SAFE // RESPECT THE ROAD</div>
+  <div class="copy"><span>TRIP CORE // MOTORING & TRAVEL JOURNAL</span><span>RIDE SAFE // RESPECT THE ROAD</span></div>
 </footer>
 
 <div id="toast" class="toast"></div>
 
 <script>
-/* =========================
-   TRIP CORE CONFIGURATION
-   ========================= */
+/* =========================================================
+   TRIP CORE // NEW MAGAZINE FRONTEND
+   Your existing Apps Script / Google Sheet connection stays.
+   ========================================================= */
 const CONFIG = {
-  // Paste your deployed Google Apps Script Web App URL here:
   API_URL: "https://script.google.com/macros/s/AKfycbwePpLYk9i4KNuxssbK5naVnbtgeOjLwtz2MJkip10XxjS8UEfJifhE1qBfOSkY3aVqtQ/exec",
-
-  // Change this to the riding group's real Instagram URL:
   INSTAGRAM_URL: "https://www.instagram.com/trip_core_riders?utm_source=qr",
-
-  // How often the portal refreshes Google Sheet data:
   REFRESH_MS: 60000
 };
 
-let DB = {trips:[], locations:[], spots:[], riders:[], rideLogs:[], gallery:[]};
-let allRows = [];
+let DB={trips:[],locations:[],spots:[],riders:[],rideLogs:[],gallery:[]};
+let allRows=[];
+let machineFilter="ALL";
 
-document.getElementById("instagramBtn").href = CONFIG.INSTAGRAM_URL;
-document.getElementById("instagramMain").href = CONFIG.INSTAGRAM_URL;
+document.getElementById("instagramBtn").href=CONFIG.INSTAGRAM_URL;
+document.getElementById("instagramMain").href=CONFIG.INSTAGRAM_URL;
+document.getElementById("issueDate").textContent=new Date().getFullYear();
 
 function esc(v){
-  return String(v ?? "").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
+  return String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
 }
 function toast(msg){
-  const t=document.getElementById("toast"); t.textContent=msg; t.classList.add("show");
+  const t=document.getElementById("toast");
+  t.textContent=msg;t.classList.add("show");
   setTimeout(()=>t.classList.remove("show"),3500);
 }
 function mapLink(place,url){
-  if(url && /^https?:\/\//i.test(url)) return url;
+  if(url&&/^https?:\/\//i.test(url))return url;
   return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(place||"");
 }
 function formatDate(v){
-  if(!v) return "DATE TBC";
+  if(!v)return "DATE TBC";
   const d=new Date(v);
-  if(isNaN(d)) return esc(v);
+  if(isNaN(d))return esc(v);
   return d.toLocaleDateString("en-IN",{day:"2-digit",month:"short",year:"numeric"});
 }
 function normalizeRows(arr){
-  return Array.isArray(arr) ? arr.filter(x=>x && typeof x==="object") : [];
+  return Array.isArray(arr)?arr.filter(x=>x&&typeof x==="object"):[];
+}
+function machineType(x){
+  const s=String(x.bike||x.vehicle||x.machine||x.vehicleType||"").toLowerCase();
+  if(/bike|motorcycle|scooter|royal|himalayan|bullet|duke|apache|r15|ktm|yamaha|honda/.test(s))return "BIKE";
+  if(/car|kia|seltos|sonet|carens|sportage|ev|vehicle/.test(s))return "CAR";
+  return "OTHER";
 }
 
-async function api(action, params={}){
-  if(CONFIG.API_URL.includes("PASTE_YOUR")){
-    throw new Error("Add your Apps Script Web App URL in CONFIG.API_URL");
-  }
+async function api(action,params={}){
+  if(CONFIG.API_URL.includes("PASTE_YOUR"))throw new Error("Add your Apps Script Web App URL in CONFIG.API_URL");
   const url=new URL(CONFIG.API_URL);
   url.searchParams.set("action",action);
   Object.entries(params).forEach(([k,v])=>url.searchParams.set(k,v));
   const r=await fetch(url.toString(),{method:"GET",cache:"no-store"});
-  if(!r.ok) throw new Error("Server returned "+r.status);
+  if(!r.ok)throw new Error("Server returned "+r.status);
   return r.json();
 }
 
@@ -210,8 +554,8 @@ async function loadData(showToast=false){
     renderAll();
     document.getElementById("headerStatus").textContent="LIVE";
     document.getElementById("statStatus").textContent="ONLINE";
-    document.getElementById("lastSync").textContent="Synced "+new Date().toLocaleTimeString("en-IN");
-    if(showToast) toast("Portal data updated.");
+    document.getElementById("lastSync").textContent="SYNCED "+new Date().toLocaleTimeString("en-IN");
+    if(showToast)toast("Road journal updated.");
   }catch(e){
     console.error(e);
     document.getElementById("headerStatus").textContent="OFFLINE";
@@ -225,64 +569,108 @@ function renderAll(){
   document.getElementById("statTrips").textContent=DB.trips.length;
   document.getElementById("statLocations").textContent=DB.locations.length;
   document.getElementById("statSpots").textContent=DB.spots.length;
-  renderTrips(); renderLocations(); renderSpots(); renderSearch();
+  renderFeatured();
+  renderMachines();
+  renderLocations();
+  renderSpots();
+  renderRoutes();
+  renderSearch();
+  activateReveal();
 }
 
-function renderTrips(){
-  const el=document.getElementById("tripCards");
-  if(!DB.trips.length){el.innerHTML='<div class="empty">NO TRIPS FOUND IN GOOGLE SHEET.</div>';return;}
-  el.innerHTML=DB.trips.map((x,i)=>{
-    const place=x.destination||x.title||"Trip";
-    const map=mapLink(place,x.mapUrl);
-    return `<article class="card">
-      <div class="tag">${esc(x.status||"UPCOMING")}</div>
-      <h3>${esc(place)}</h3>
-      <p>${esc(x.description||"Group ride information")}</p>
-      <div class="meta">
-        <div><small>DATE</small><b>${formatDate(x.date)}</b></div>
-        <div><small>START</small><b>${esc(x.startPoint||"TBC")}</b></div>
-        <div><small>MEETING</small><b>${esc(x.meetingPoint||"TBC")}</b></div>
-        <div><small>RIDERS</small><b>${esc(x.ridersCount||"TBC")}</b></div>
+function renderFeatured(){
+  const x=DB.trips[0];
+  if(!x){
+    document.getElementById("featuredTitle").innerHTML="THE NEXT<br>ROAD AWAITS";
+    document.getElementById("featuredDesc").textContent="Add a trip to the Google Sheet and it will become the next feature story.";
+    document.getElementById("featuredMap").href="#routes";
+    return;
+  }
+  const place=x.destination||x.title||"UPCOMING RIDE";
+  document.getElementById("featuredTag").textContent=String(x.status||"UPCOMING").toUpperCase()+" // "+formatDate(x.date);
+  document.getElementById("featuredTitle").innerHTML=esc(place).replace(/\s+/g,"<br>");
+  document.getElementById("featuredDesc").textContent=x.description||("Start: "+(x.startPoint||"TBC")+" • Meeting: "+(x.meetingPoint||"TBC"));
+  document.getElementById("featuredMap").href=mapLink(place,x.mapUrl);
+}
+
+function renderMachines(){
+  const el=document.getElementById("machineGrid");
+  const rows=DB.rideLogs.filter(x=>machineFilter==="ALL"||machineType(x)===machineFilter).slice(0,6);
+  if(!rows.length){
+    if(machineFilter!=="ALL"){el.innerHTML='<div class="empty">NO '+machineFilter+' RECORDS FOUND IN THE CURRENT DATA.</div>';return;}
+    return;
+  }
+  const fallback=[
+    "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg",
+    "https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg",
+    "https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg"
+  ];
+  el.innerHTML=rows.map((x,i)=>{
+    const type=machineType(x);
+    const title=x.title||x.riderName||"ROAD ENTRY";
+    return `<article class="mag-card">
+      <div class="mag-image" style="background-image:url('${fallback[i%fallback.length]}')"></div>
+      <div class="mag-body">
+        <div class="mag-label">${esc(type)} // ${esc(x.type||"ROAD LOG")}</div>
+        <h3>${esc(title)}</h3>
+        <p>${esc(x.notes||x.description||"Rider contribution from the road journal.")}</p>
+        <div class="mag-meta"><div><small>RIDER</small><b>${esc(x.riderName||"GROUP")}</b></div><div><small>DATE</small><b>${formatDate(x.date)}</b></div></div>
       </div>
-      <div class="map-actions"><a class="btn" href="${esc(map)}" target="_blank" rel="noopener">OPEN MAP</a></div>
     </article>`;
   }).join("");
 }
 
 function renderLocations(){
   const el=document.getElementById("locationCards");
-  if(!DB.locations.length){el.innerHTML='<div class="empty">NO LOCATIONS FOUND.</div>';return;}
-  el.innerHTML=DB.locations.map(x=>{
-    const place=x.name||x.location||"Location";
-    return `<article class="card">
-      <span class="status">${esc(x.status||"ACTIVE")}</span>
-      <h3>${esc(place)}</h3>
-      <p>${esc(x.description||"Useful riding location")}</p>
-      <div class="meta">
-        <div><small>TYPE</small><b>${esc(x.type||"DESTINATION")}</b></div>
-        <div><small>UPDATED</small><b>${formatDate(x.updatedAt)}</b></div>
+  if(!DB.locations.length){el.innerHTML='<div class="empty">NO DESTINATIONS FOUND.</div>';return;}
+  const pics=[
+    "https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg",
+    "https://images.pexels.com/photos/753626/pexels-photo-753626.jpeg",
+    "https://images.pexels.com/photos/2101187/pexels-photo-2101187.jpeg"
+  ];
+  el.innerHTML=DB.locations.map((x,i)=>{
+    const place=x.name||x.location||"DESTINATION";
+    return `<article class="mag-card">
+      <div class="mag-image" style="background-image:url('${pics[i%pics.length]}')"></div>
+      <div class="mag-body">
+        <div class="mag-label">${esc(x.type||"DESTINATION")}</div>
+        <h3>${esc(place)}</h3>
+        <p>${esc(x.description||"Useful riding destination.")}</p>
+        <div class="mag-meta"><div><small>STATUS</small><b>${esc(x.status||"ACTIVE")}</b></div><div><small>UPDATED</small><b>${formatDate(x.updatedAt)}</b></div></div>
+        <div class="card-actions"><a class="btn" href="${esc(mapLink(place,x.mapUrl))}" target="_blank" rel="noopener">GOOGLE MAPS →</a></div>
       </div>
-      <div class="map-actions"><a class="btn" href="${esc(mapLink(place,x.mapUrl))}" target="_blank" rel="noopener">GOOGLE MAPS</a></div>
     </article>`;
   }).join("");
 }
 
 function renderSpots(){
   const el=document.getElementById("spotCards");
-  if(!DB.spots.length){el.innerHTML='<div class="empty">NO SPOTS FOUND.</div>';return;}
+  if(!DB.spots.length){el.innerHTML='<div class="empty">NO ROAD SPOTS FOUND.</div>';return;}
   el.innerHTML=DB.spots.map(x=>{
-    const place=x.name||x.place||"Spot";
-    return `<article class="card">
-      <div class="tag">${esc(x.type||"SPOT")}</div>
-      <h3>${esc(place)}</h3>
+    const place=x.name||x.place||"ROAD SPOT";
+    return `<article class="spot-card">
+      <div class="mag-label">${esc(x.type||"SPOT")}</div>
+      <h4>${esc(place)}</h4>
       <p>${esc(x.description||"No description yet.")}</p>
-      <div class="meta">
-        <div><small>AREA</small><b>${esc(x.area||"—")}</b></div>
-        <div><small>ADDED BY</small><b>${esc(x.addedBy||"GROUP")}</b></div>
-      </div>
-      <div class="map-actions"><a class="btn" href="${esc(mapLink(place,x.mapUrl))}" target="_blank" rel="noopener">OPEN MAP</a></div>
+      <p style="margin-top:8px"><b>AREA:</b> ${esc(x.area||"—")} &nbsp; <b>BY:</b> ${esc(x.addedBy||"GROUP")}</p>
+      <a class="btn" href="${esc(mapLink(place,x.mapUrl))}" target="_blank" rel="noopener">OPEN MAP →</a>
     </article>`;
   }).join("");
+}
+
+function renderRoutes(){
+  const el=document.getElementById("routeLine");
+  const x=DB.trips[0];
+  if(!x){
+    el.innerHTML='<div class="route-node"><small>START</small><b>GROUP</b></div><div class="route-arrow">→</div><div class="route-node"><small>DESTINATION</small><b>ADD A TRIP</b></div>';
+    return;
+  }
+  const start=x.startPoint||"START";
+  const meet=x.meetingPoint||"MEETING";
+  const dest=x.destination||x.title||"DESTINATION";
+  el.innerHTML=[
+    [start,"START"],[meet,"MEETING"],[dest,"DESTINATION"]
+  ].map((n,i)=>`<div class="route-node"><small>${n[1]}</small><b>${esc(n[0])}</b></div>${i<2?'<div class="route-arrow">→</div>':''}`).join("");
 }
 
 function renderSearch(){
@@ -295,10 +683,20 @@ function renderSearch(){
     rows.map(x=>{
       const title=x.destination||x.name||x.title||x.riderName||"—";
       const detail=x.description||x.notes||x.type||"—";
-      const map=x.mapUrl ? `<a class="btn" style="padding:7px 9px" href="${esc(x.mapUrl)}" target="_blank">MAP</a>` : "";
+      const map=x.mapUrl?`<a class="btn" style="padding:7px 9px" href="${esc(x.mapUrl)}" target="_blank" rel="noopener">MAP</a>`:"";
       return `<tr><td>${esc(x._type)}</td><td>${esc(title)}</td><td>${formatDate(x.date||x.updatedAt||x.timestamp)}</td><td>${esc(detail)}</td><td>${map}</td></tr>`;
     }).join("")+"</tbody></table>";
 }
+
+document.querySelectorAll(".machine-switch button").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".machine-switch button").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    machineFilter=btn.dataset.machine;
+    renderMachines();
+    activateReveal();
+  });
+});
 
 document.getElementById("rideForm").addEventListener("submit",async e=>{
   e.preventDefault();
@@ -306,7 +704,8 @@ document.getElementById("rideForm").addEventListener("submit",async e=>{
     toast("First add your Apps Script Web App URL in CONFIG.API_URL.");
     return;
   }
-  const btn=e.target.querySelector("button"); btn.disabled=true; btn.textContent="SAVING...";
+  const btn=e.target.querySelector("button");
+  btn.disabled=true;btn.textContent="PUBLISHING...";
   const data=Object.fromEntries(new FormData(e.target).entries());
   try{
     const r=await fetch(CONFIG.API_URL,{
@@ -315,15 +714,33 @@ document.getElementById("rideForm").addEventListener("submit",async e=>{
       body:JSON.stringify({action:"addRideLog",data})
     });
     const out=await r.json();
-    if(!out.ok) throw new Error(out.error||"Could not save.");
-    e.target.reset(); toast("Ride information saved to the group database.");
+    if(!out.ok)throw new Error(out.error||"Could not save.");
+    e.target.reset();
+    toast("Your road story was added to the group journal.");
     await loadData();
   }catch(err){toast(err.message);}
-  finally{btn.disabled=false;btn.textContent="SAVE TO GROUP DATABASE";}
+  finally{btn.disabled=false;btn.textContent="PUBLISH TO ROAD JOURNAL →";}
 });
+
+function activateReveal(){
+  const els=document.querySelectorAll(".reveal:not(.visible)");
+  if(!("IntersectionObserver" in window)){
+    els.forEach(x=>x.classList.add("visible"));return;
+  }
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add("visible");
+        io.unobserve(entry.target);
+      }
+    });
+  },{threshold:.12});
+  els.forEach(x=>io.observe(x));
+}
 
 loadData();
 setInterval(()=>loadData(false),CONFIG.REFRESH_MS);
+activateReveal();
 </script>
 </body>
 </html>
