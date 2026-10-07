@@ -1,2 +1,0 @@
-# tripcore
-trip analysis
